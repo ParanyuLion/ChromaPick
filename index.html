@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChromaPick - Advanced Color Picker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>ChromaPick</h1>
+            <p>Upload an image and pick any color instantly.</p>
+        </header>
+
+        <main>
+            <div class="workspace">
+                <div class="image-area" id="drop-zone">
+                    <button id="btn-remove" class="btn-remove" title="Remove Image" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>
+                    </button>
+                    <div class="placeholder" id="placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <p>Drag & Drop your image here</p>
+                        <button class="btn-upload" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                    </div>
+                    <canvas id="image-canvas"></canvas>
+                    <div class="magnifier" id="magnifier"></div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="color-preview-card">
+                        <div class="color-swatch" id="color-swatch"></div>
+                        <div class="color-info">
+                            <div class="color-value-group">
+                                <label>HEX</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="hex-value" readonly value="#FFFFFF">
+                                    <button class="btn-copy" data-target="hex-value" title="Copy HEX">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="color-value-group">
+                                <label>RGB</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="rgb-value" readonly value="rgb(255, 255, 255)">
+                                    <button class="btn-copy" data-target="rgb-value" title="Copy RGB">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h3>How to use</h3>
+                        <ul>
+                            <li>Upload an image (JPG, PNG, WebP)</li>
+                            <li>Hover to preview colors</li>
+                            <li>Click to lock a color selection</li>
+                            <li>Copy the code to your clipboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
